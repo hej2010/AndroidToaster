@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import java.lang.ref.WeakReference;
 
 public class Toaster {
-    private static Toaster toastMaker;
+    private static Toaster toaster;
     private static android.widget.Toast toast;
     private final WeakReference<Context> weakReference;
 
@@ -15,10 +15,10 @@ public class Toaster {
     }
 
     public static Toaster getInstance(@NonNull Context context) {
-        if (toastMaker == null) {
-            toastMaker = new Toaster(context.getApplicationContext());
+        if (toaster == null) {
+            toaster = new Toaster(context.getApplicationContext());
         }
-        return toastMaker;
+        return toaster;
     }
 
     public void showShort(@NonNull String message) {
