@@ -15,9 +15,8 @@ public class Toaster {
     }
 
     public static Toaster getInstance(@NonNull Context context) {
-        if (toaster == null) {
+        if (toaster == null)
             toaster = new Toaster(context.getApplicationContext());
-        }
         return toaster;
     }
 
@@ -29,11 +28,12 @@ public class Toaster {
         show(message, true);
     }
 
-    private void show(@NonNull String message, boolean _long) {
-        if (toast != null) {
+    private void show(@NonNull String message, boolean duration) {
+        if (toast != null)
             toast.cancel();
-        }
-        toast = Toast.makeText(weakReference.get(), message, _long ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT);
+        // Toast.LENGTH_LONG is having 1 int value.
+        // Toast.LENGTH_SHORT is having 0 int value.
+        toast = Toast.makeText(weakReference.get(), message, duration ? 1 : 0);
         toast.show();
     }
 
